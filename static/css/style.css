@@ -17,20 +17,23 @@ body{
     text-align: center;
 }
 
-.box_calculadora{
-    background-color: black;
+.box-calculadora{
+    background: linear-gradient(to bottom, #000000, #151515, #212121);
 
     border: 2px solid white;
 
     height: 500px;
     width: 500px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .visor{
     background-color: #212121;
 
     border: 1px solid white;
-    border-radius: 3px;
+    border-radius: 10px;
 
     height: 80px;
     width: 450px;
@@ -45,16 +48,33 @@ body{
     text-align: center;
 }
 
+.campo-botoes{
+    background-color: red;
+
+    width: 100%;
+    flex: 1;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-items: center;
+    align-items: flex-start;
+    justify-content: center;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 50px;
+
+}
+
 .botao{
-    background-color: #212121;
+    background-color: rgba(0, 0, 0, 5.0);
 
     border: 1px solid white;
+    border-radius: 10px;
 
     height: 80px;
     width: 100px;
 
-    display: flex;
-
-    justify-content: ;
-    
 }
