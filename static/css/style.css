@@ -18,7 +18,7 @@ body{
 }
 
 .box-calculadora{
-    background: linear-gradient(black);
+    background-color: #000000;
 
     border: 2px solid white;
     border-radius: 30px;
@@ -32,9 +32,10 @@ body{
 
 .visor{
     background-color: #212121;
-    color: rgb(0, 255, 13);
+    color: rgb(184, 58, 58);
 
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
 
     border: 1px solid white;
     border-radius: 10px;
@@ -84,6 +85,28 @@ body{
     height: 70px;
     width: 90px;
 
+}
+
+.resultado:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: x-large;
+
+    border: 2px solid rgb(184, 58, 58);
+
+    height: 248px;
+
+}
+
+.botao:not(.resultado):hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: x-large;
+
+    border: 2px solid rgb(184, 58, 58);
+
+    height: 60px;
+    width: 80px;
 }
 
 .resultado{
