@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
-
 app.secret_key = "calculadora_isac"
 
 @app.route("/", methods=["GET", "POST"])
 
 def rota():
+    ultima_interacao = 0
+
     if request.method == "POST":
 
         #Lê dados enviados pelo botão no HTML
@@ -26,18 +27,28 @@ def rota():
         if numero_variavel is not None:
             if "primeiro_numero_session" not in session:
                 session["primeiro_numero_session"] = numero_variavel
+                ultima_interacao = session["primeiro_numero_session"]
             else:
                 session["segundo_numero_session"] = numero_variavel
-
+                ultima_interacao = session["segundo_numero_session"]
+        
         #Atribui a session á variavel do python
         if operacao_variavel is not None:
             session["operacao_session"] = operacao_variavel
+            ultima_interacao = session["operacao_session"]
+            if ultima_interacao == "subtracao":
+                ultima_interacao = "-"
+            elif ultima_interacao == "multiplicacao":
+                ultima_interacao = "X"
+            else:
+                ultima_interacao = "+"
+
         if acao_variavel is not None:
             session["acao_session"] = acao_variavel
+            ultima_interacao = session["acao_session"]
 
         #Atribui a variavel ao valor da session naquela session, na session 
         #sequinte o valor muda
-
         primeiro_numero = session.get("primeiro_numero_session")
         segundo_numero = session.get("segundo_numero_session")
         operacao_variavel = session.get("operacao_session")
@@ -47,12 +58,12 @@ def rota():
         print(session.get("primeiro_numero_session"))
         print(session.get("operacao_session"))
         print(session.get("segundo_numero_session"))
+        print(f"Ultima interação = {ultima_interacao}")
 
-        if acao_variavel == "resultado":
-            print("Só p prencher msm")
+        if ultima_interacao == "limpar":
+            ultima_interacao = 0
 
-
-    return render_template("index.html")
+    return render_template("index.html", visor = ultima_interacao)
 
 # print("-=-"*10, "Calculadora", "-=-"*10)
 
