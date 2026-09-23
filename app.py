@@ -13,7 +13,8 @@ def rota():
         acao_variavel = request.form.get("acao_html")
 
         #Limpa sessão, melhor deixar aqui em cima pq lá em baixo o usuário teria
-        # que clicar duas vezes pois no primeiro clique ele iria 
+        # que clicar duas vezes pois no primeiro clique ele iria definir a variavel
+        # da session e só no segundo clique ira limpar de fato.
         if acao_variavel == "limpar":
             session.clear()
 
@@ -21,18 +22,12 @@ def rota():
         operacao_variavel = request.form.get("operacao_html")
         numero_variavel = request.form.get("numero_html")
 
-        #Separa o primeiro numero da session e o segundo numero da session
+        #Defini o primeiro numero da session e o segundo numero da session
         if numero_variavel is not None:
             if "primeiro_numero_session" not in session:
                 session["primeiro_numero_session"] = numero_variavel
             else:
                 session["segundo_numero_session"] = numero_variavel
-
-        #Temporário enquanto o visor não funciona,
-        #só p ver se os valores estão indo certo
-        print(session.get("primeiro_numero_session"))
-        print(session.get("operacao_session"))
-        print(session.get("segundo_numero_session"))
 
         #Atribui a session á variavel do python
         if operacao_variavel is not None:
@@ -47,9 +42,11 @@ def rota():
         segundo_numero = session.get("segundo_numero_session")
         operacao_variavel = session.get("operacao_session")
 
-        #Não seria melhor deixar a linha 38 a 40 fora desse IF, pq ai o valor 
-        #da session vai existir mesmo se o usuário não clicar em resultado. 
-        #Ou tanto faz? Eis a questão
+        #Temporário enquanto o visor não funciona,
+        #só p ver se os valores estão indo certo
+        print(session.get("primeiro_numero_session"))
+        print(session.get("operacao_session"))
+        print(session.get("segundo_numero_session"))
 
         if acao_variavel == "resultado":
             print("Só p prencher msm")
