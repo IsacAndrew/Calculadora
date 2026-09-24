@@ -12,7 +12,7 @@ def rota():
 
         #Lê dados enviados pelo botão no HTML
         acao_variavel = request.form.get("acao_html")
-
+      
         #Limpa sessão, melhor deixar aqui em cima pq lá em baixo o usuário teria
         # que clicar duas vezes pois no primeiro clique ele iria definir a variavel
         # da session e só no segundo clique ira limpar de fato.
@@ -36,12 +36,6 @@ def rota():
         if operacao_variavel is not None:
             session["operacao_session"] = operacao_variavel
             ultima_interacao = session["operacao_session"]
-            if ultima_interacao == "subtracao":
-                ultima_interacao = "-"
-            elif ultima_interacao == "multiplicacao":
-                ultima_interacao = "X"
-            else:
-                ultima_interacao = "+"
 
         if acao_variavel is not None:
             session["acao_session"] = acao_variavel
@@ -60,10 +54,29 @@ def rota():
         print(session.get("segundo_numero_session"))
         print(f"Ultima interação = {ultima_interacao}")
 
+        #Tratamento para limpar o ultimo digito do usuário, seja 1, +, 7, -, 4...
         if ultima_interacao == "limpar":
             ultima_interacao = 0
 
+        #Transforma o primeiro e segundo numero em inteiro. Calculadora não funciona com número não inteiro 
+        if acao_variavel == "resultado":
+            if primeiro_numero is not None and segundo_numero is not None:
+                primeiro_numero = int(primeiro_numero)
+                segundo_numero = int(segundo_numero)
+
+        #Calculo da calculadora (O cerebro de tudo)
+        if acao_variavel == "resultado":
+            if operacao_variavel == "-":
+                resultado = ((primeiro_numero) - (segundo_numero))
+            elif operacao_variavel == "+":
+                resultado = ((primeiro_numero) + (segundo_numero))
+            elif operacao_variavel == "X":
+                resultado = ((primeiro_numero) * (segundo_numero))
+            ultima_interacao = resultado
+
     return render_template("index.html", visor = ultima_interacao)
+
+    
 
 # print("-=-"*10, "Calculadora", "-=-"*10)
 
