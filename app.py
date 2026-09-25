@@ -38,11 +38,6 @@ def rota():
         segundo_numero = session.get("segundo_numero_session")
         operacao_variavel = session.get("operacao_session")
 
-        print(session.get("primeiro_numero_session"))
-        print(session.get("operacao_session"))
-        print(session.get("segundo_numero_session"))
-        print(f"Ultima interação = {ultima_interacao}")
-
         if ultima_interacao == "limpar":
             ultima_interacao = 0
 
