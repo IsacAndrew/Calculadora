@@ -61,17 +61,19 @@ def rota():
         #Calculo da calculadora (O cerebro de tudo)
         if acao_variavel == "resultado":
             if operacao_variavel == "-":
-                resultado = ((primeiro_numero) - (segundo_numero))
+                resultado = (primeiro_numero) - (segundo_numero)
             elif operacao_variavel == "+":
-                resultado = ((primeiro_numero) + (segundo_numero))
+                resultado = (primeiro_numero) + (segundo_numero)
             elif operacao_variavel == "X":
-                resultado = ((primeiro_numero) * (segundo_numero))
+                resultado = (primeiro_numero) * (segundo_numero)
+            elif operacao_variavel == "÷":
+                resultado = (primeiro_numero) / (segundo_numero)
             ultima_interacao = resultado
 
         print(f"Primeiro dig.  :{primeiro_numero}")
         print(f"Operação sel.  :{operacao_variavel}")
         print(f"Segundo dig.   :{segundo_numero}")
-        print(f"Resultado Fin. :{resultado}")#Ta dando erro em resultado, porque? Eu coloquei a variavel...
+        print(f"Resultado Fin. :{resultado}")
 
 
     return render_template("index.html", visor = ultima_interacao)
