@@ -54,9 +54,8 @@ def rota():
 
         #Transforma o primeiro e segundo numero em inteiro. Calculadora AINDA não funciona com número não inteiro 
         if acao_variavel == "resultado":
-            if primeiro_numero is not None and segundo_numero is not None:
-                primeiro_numero = int(primeiro_numero)
-                segundo_numero = int(segundo_numero)
+            primeiro_numero = int(primeiro_numero)
+            segundo_numero = int(segundo_numero)        
 
         #Calculo da calculadora (O cerebro de tudo)
         if acao_variavel == "resultado":
@@ -69,11 +68,11 @@ def rota():
             elif operacao_variavel == "÷":
                 resultado = (primeiro_numero) / (segundo_numero)
             ultima_interacao = resultado
-
-        print(f"Primeiro dig.  :{primeiro_numero}")
-        print(f"Operação sel.  :{operacao_variavel}")
-        print(f"Segundo dig.   :{segundo_numero}")
-        print(f"Resultado Fin. :{resultado}")
+      
+            print(f"Primeiro dig.  :{primeiro_numero}")
+            print(f"Operação sel.  :{operacao_variavel}")
+            print(f"Segundo dig.   :{segundo_numero}")
+            print(f"Resultado Fin. :{resultado}")
 
 
     return render_template("index.html", visor = ultima_interacao)
