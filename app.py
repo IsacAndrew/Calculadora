@@ -53,11 +53,13 @@ def rota():
 
         if acao_variavel == "resultado":
             if operacao_variavel == "-":
-                resultado = ((primeiro_numero) - (segundo_numero))
+                resultado = (primeiro_numero) - (segundo_numero)
             elif operacao_variavel == "+":
-                resultado = ((primeiro_numero) + (segundo_numero))
+                resultado = (primeiro_numero) + (segundo_numero)
             elif operacao_variavel == "X":
-                resultado = ((primeiro_numero) * (segundo_numero))
+                resultado = (primeiro_numero) * (segundo_numero)
+            elif operacao_variavel == "÷":
+                resultado = (primeiro_numero) / (segundo_numero)
             ultima_interacao = resultado
 
     return render_template("index.html", visor = ultima_interacao)
